@@ -1894,89 +1894,6 @@ def edge_pmid_input_Bern(input_file = "./bern_edge_combination_sorted_merged2_.t
             line_cnt += 1
     f.close()
 
-def edge_input_New(InputFilePath, InputFileName):
-    global a
-    #output_file = "C://Users//kms0845//Desktop//Work//Data//190531//edges_out_real.csv"
-
-    node1_id = 0
-    node2_id = 0
-    node1_domain = ""
-    node2_domain = ""
-
-    Metabolite_lable_reverse_dictionary = {"Metabolite":"Metabolite", "disease":"Disease", "mutation":"Mutation", "gene":"Gene", "species":"Species", "miRNA":"miRNA",
-                                            "pathway":"pathway"}
-
-
-    #lable_dictionary = {"Chemical": 1, "Disease": 2, "Mutation": 3, "Gene": 4, "Species": 5, "CellLine": 6,
-    #                    "Hallmark": 7, "Pro" : 8}
-
-    f = open(InputFilePath + InputFileName + ".txt","r")
-
-    relationship_cnt = 1
-    line_cnt = 1
-
-    edge_input_dictionary = {}
-    cnt3 = 1
-    line = f.readline()
-
-    while True:
-        line = f.readline()
-        if not line : break
-        line_temp = line.rstrip("\n").split("\t")
-        type_of_relationship = "Similarity_Distance"
-
-        # if('CUI-less' in line_temp[2]):
-        #     line_temp[2] = "CUI-less-"+str(line_temp[0])
-        node1_name = line_temp[0]
-        try :
-            node1_domain = "Metabolite"
-        except:
-            print("Node1_DOMAIN_1 Erorr!",cnt3)
-            print(line)
-
-        # if ('CUI-less' in line_temp[5]):
-        #     line_temp[5] = "CUI-less-" + str(line_temp[3])
-        node2_name = line_temp[1]
-        try :
-            node2_domain = "Metabolite"
-        except:
-            print("Node1_DOMAIN_2 Erorr!",cnt3)
-            print(line)
-
-        relationship_cnt = relationship_cnt + 1
-        edge_input_dictionary = {}
-        edge_input_dictionary["Similarity_Distance"] = float(line_temp[2])
-        edge_input_dictionary["Entity"] = str("\"Entity\"")
-
-        temp_node1_id = a.node_id_with_lable(node1_name, node1_domain)
-        temp_node2_id = a.node_id_with_lable(node2_name, node2_domain)
-
-        if (temp_node1_id == -1 or temp_node2_id == -1):
-            print(str(node1_name)+"__"+str(node2_name))
-            continue
-        if (temp_node1_id == None or temp_node2_id == None):
-            print(str(node1_name) + "__" + str(node2_name))
-            continue
-
-        if (relationship_cnt == 10000):
-            relationship_cnt = 0
-            print(line_cnt * 10000)
-            line_cnt += 1
-
-
-        temp003 = a.check_relationships_by_id(temp_node1_id, temp_node2_id, type_of_relationship)
-        # print(temp003)
-        if (temp003 == -1):
-            a.create_relationship_by_id(temp_node1_id, temp_node2_id, type_of_relationship, edge_input_dictionary)
-        elif (temp003 == -2):
-            print("unkown relationship error")
-            print(node1_name, node1_domain, node2_name, node2_domain)
-            continue
-        if (relationship_cnt == 10000):
-            relationship_cnt = 0
-            print(line_cnt * 10000)
-            line_cnt += 1
-    f.close()
 
 def node_input(input_file= "C://Users//kms0845//Downloads//LionDB//Node_Cellline.csv"):
     global a
@@ -2098,13 +2015,13 @@ def node_input_Disease_DisGeNET(input_file_path="C:\\Users\\seomy\\Desktop\\Uplo
     input_file = f.readlines()
     f.close()
 
-    node_input_dictionary = {"Unique_ID":entity,"text_DisGeNET":text,"OID_DisGeNET":OID,"ID":"ID_null","type":data_type,"remarks_DisGeNET":remarks}
+    node_input_dictionary = {"ID":entity,"text_DisGeNET":text,"OID_DisGeNET":OID,"type":data_type,"remarks_DisGeNET":remarks}
 
     cnt = 0
     for line in input_file:
         temp_in = line.rstrip("\n").split("\t")
 
-        node_input_dictionary["Unique_ID"] = temp_in[0]
+        node_input_dictionary["ID"] = temp_in[0]
         node_input_dictionary["text_DisGeNET"] = temp_in[2]
         node_input_dictionary["OID_DisGeNET"] = temp_in[1]
         node_input_dictionary["type"] = "Disease"
@@ -2132,13 +2049,13 @@ def node_input_Disease_ChEMBL(input_file_path="C:\\Users\\seomy\\Desktop\\Upload
     input_file = f.readlines()
     f.close()
 
-    node_input_dictionary = {"Unique_ID":entity,"text_ChEMBL":text,"OID_ChEMBL":OID,"ID":"ID_null","type":data_type,"remarks_ChEMBL":remarks}
+    node_input_dictionary = {"ID":entity,"text_ChEMBL":text,"OID_ChEMBL":OID,"type":data_type,"remarks_ChEMBL":remarks}
 
     cnt = 0
     for line in input_file:
         temp_in = line.rstrip("\n").split("\t")
 
-        node_input_dictionary["Unique_ID"] = temp_in[0]
+        node_input_dictionary["ID"] = temp_in[0]
         node_input_dictionary["text_ChEMBL"] = temp_in[2]
         node_input_dictionary["OID_ChEMBL"] = temp_in[1]
         node_input_dictionary["type"] = "Disease"
@@ -2166,13 +2083,13 @@ def node_input_Disease_CTD(input_file_path="C:\\Users\\seomy\\Desktop\\Upload_te
     input_file = f.readlines()
     f.close()
 
-    node_input_dictionary = {"Unique_ID":entity,"text_CTD":text,"OID_CTD":"OID_null","ID":"ID_null","type":data_type,"remarks_CTD":"remarks_null"}
+    node_input_dictionary = {"ID":entity,"text_CTD":text,"OID_CTD":"OID_null","type":data_type,"remarks_CTD":"remarks_null"}
 
     cnt = 0
     for line in input_file:
         temp_in = line.rstrip("\n").split("\t")
 
-        node_input_dictionary["Unique_ID"] = temp_in[0]
+        node_input_dictionary["ID"] = temp_in[0]
         node_input_dictionary["text_CTD"] = temp_in[1]
         node_input_dictionary["type"] = "Disease"
 
@@ -2197,13 +2114,13 @@ def node_input_Protein_ChEMBL(input_file_path="C:\\Users\\seomy\\Desktop\\Upload
     input_file = f.readlines()
     f.close()
 
-    node_input_dictionary = {"Unique_ID":entity,"text_ChEMBL":text,"OID_ChEMBL":OID,"ID":"ID_null","type":data_type,"remarks_ChEMBL":remarks}
+    node_input_dictionary = {"ID":entity,"text_ChEMBL":text,"OID_ChEMBL":OID,"type":data_type,"remarks_ChEMBL":remarks}
 
     cnt = 0
     for line in input_file:
         temp_in = line.rstrip("\n").split("\t")
 
-        node_input_dictionary["Unique_ID"] = temp_in[0]
+        node_input_dictionary["ID"] = temp_in[0]
         node_input_dictionary["text_ChEMBL"] = temp_in[2]
         node_input_dictionary["OID_ChEMBL"] = temp_in[1]
         node_input_dictionary["type"] = "Protein"
@@ -2230,13 +2147,13 @@ def node_input_Protein_BindingDB(input_file_path="C:\\Users\\seomy\\Desktop\\Upl
     input_file = f.readlines()
     f.close()
 
-    node_input_dictionary = {"Unique_ID":entity,"text_BindingDB":text,"OID_BindingDB":OID,"ID":"ID_null","type":data_type,"remarks_BindingDB":remarks}
+    node_input_dictionary = {"ID":entity,"text_BindingDB":text,"OID_BindingDB":OID,"type":data_type,"remarks_BindingDB":remarks}
 
     cnt = 0
     for line in input_file:
         temp_in = line.rstrip("\n").split("\t")
 
-        node_input_dictionary["Unique_ID"] = temp_in[0]
+        node_input_dictionary["ID"] = temp_in[0]
         node_input_dictionary["text_BindingDB"] = temp_in[2]
         node_input_dictionary["OID_BindingDB"] = temp_in[1]
         node_input_dictionary["type"] = "Protein"
@@ -2263,13 +2180,13 @@ def node_input_Protein_Uniprot(input_file_path="C:\\Users\\seomy\\Desktop\\Uploa
     input_file = f.readlines()
     f.close()
 
-    node_input_dictionary = {"Unique_ID":entity,"text_Uniprot":text,"OID_Uniport":"OID_null","ID":"ID_null","type":data_type,"remarks_Uniprot":remarks}
+    node_input_dictionary = {"ID":entity,"text_Uniprot":text,"OID_Uniport":"OID_null","type":data_type,"remarks_Uniprot":remarks}
 
     cnt = 0
     for line in input_file:
         temp_in = line.rstrip("\n").split("\t")
 
-        node_input_dictionary["Unique_ID"] = temp_in[0]
+        node_input_dictionary["ID"] = temp_in[0]
         node_input_dictionary["text_Uniprot"] = temp_in[2]
         node_input_dictionary["type"] = "Protein"
         node_input_dictionary["remarks_Uniprot"] = temp_in[1]
@@ -2295,13 +2212,13 @@ def node_input_Protein_TTD(input_file_path="C:\\Users\\seomy\\Desktop\\Upload_te
     input_file = f.readlines()
     f.close()
 
-    node_input_dictionary = {"Unique_ID":entity,"text_TTD":text,"OID_TTD":OID,"ID":"ID_null","type":data_type,"remarks_TTD":remarks}
+    node_input_dictionary = {"ID":entity,"text_TTD":text,"OID_TTD":OID,"type":data_type,"remarks_TTD":remarks}
 
     cnt = 0
     for line in input_file:
         temp_in = line.rstrip("\n").split("\t")
 
-        node_input_dictionary["Unique_ID"] = temp_in[0]
+        node_input_dictionary["ID"] = temp_in[0]
         node_input_dictionary["text_TTD"] = temp_in[2]
         node_input_dictionary["OID_TTD"]  = temp_in[1]
         node_input_dictionary["type"] = "Protein"
@@ -2321,9 +2238,286 @@ def node_input_Protein_TTD(input_file_path="C:\\Users\\seomy\\Desktop\\Upload_te
 
     print("\nUpload done")
 
+def node_input_Species_KEGG(input_file_path="C:\\Users\\seomy\\Desktop\\Upload_test\\Node_Species_KEGG.txt",entity="Scientific_name",text="DB_Code",OID="DB_ID",data_type="Species", remarks="Category"):
+    global a
+
+    f = open(input_file_path,"r")
+    input_file = f.readlines()
+    f.close()
+
+    node_input_dictionary = {"ID":entity,"text_KEGG":text,"OID_KEGG":OID,"type":data_type,"remarks_KEGG":remarks}
+
+    cnt = 0
+    for line in input_file:
+        temp_in = line.rstrip("\n").split("\t")
+
+        node_input_dictionary["ID"] = temp_in[0]
+        node_input_dictionary["text_KEGG"] = temp_in[2]
+        node_input_dictionary["OID_KEGG"]  = temp_in[1]
+        node_input_dictionary["type"] = "Species"
+        node_input_dictionary["remarks_KEGG"] = temp_in[4]
+
+        cnt = cnt + 1
+
+        print(temp_in)
+
+        try:
+            label_type = data_type
+        except:
+            print("add node without type error.")
+            continue
+
+        a.add_nodes(label_type, **node_input_dictionary)
+
+    print("\nUpload done")
+
+def node_input_Species_NPASS(input_file_path="C:\\Users\\seomy\\Desktop\\Upload_test\\Node_Species_NPASS.txt",entity="Scientific_name",OID="DB_ID",data_type="Species", remarks="org_tax_level"):
+    global a
+
+    f = open(input_file_path,"r")
+    input_file = f.readlines()
+    f.close()
+
+    node_input_dictionary = {"ID":entity,"text_NPASS":"text_null","OID_NPASS":OID,"type":data_type,"remarks_NPASS":remarks}
+
+    cnt = 0
+    for line in input_file:
+        temp_in = line.rstrip("\n").split("\t")
+
+        node_input_dictionary["ID"] = temp_in[0]
+        node_input_dictionary["OID_NPASS"]  = temp_in[1]
+        node_input_dictionary["type"] = "Species"
+        node_input_dictionary["remarks_NPASS"] = temp_in[2]
+
+        cnt = cnt + 1
+
+        print(temp_in)
+
+        try:
+            label_type = data_type
+        except:
+            print("add node without type error.")
+            continue
+
+        a.add_nodes(label_type, **node_input_dictionary)
+
+    print("\nUpload done")
+
+def node_input_Species_KNApSAcK(input_file_path="C:\\Users\\seomy\\Desktop\\Upload_test\\Node_Species_KNApSAcK.txt",entity="Scientific_name",data_type="Species"):
+    global a
+
+    f = open(input_file_path,"r")
+    input_file = f.readlines()
+    f.close()
+
+    node_input_dictionary = {"ID":entity,"text_KNApSAcK":"text_null","OID_KNApSAcK":"OID_null","type":data_type,"remarks_KNApSAcK":"remarks_null"}
+
+    cnt = 0
+    for line in input_file:
+        temp_in = line.rstrip("\n").split("\t")
+
+        node_input_dictionary["ID"] = temp_in[0]
+        node_input_dictionary["type"] = "Species"
+
+        cnt = cnt + 1
+
+        print(temp_in)
+
+        try:
+            label_type = data_type
+        except:
+            print("add node without type error.")
+            continue
+
+        a.add_nodes(label_type, **node_input_dictionary)
+
+    print("\nUpload done")
+
+def node_input_Bioactivity_KNApSAcK(input_file_path="C:\\Users\\seomy\\Desktop\\Upload_test\\Node_Bioactivity_KNApSAcK.txt",entity="Bioactivity_keyword",data_type="Bioactivity"):
+    global a
+
+    f = open(input_file_path,"r")
+    input_file = f.readlines()
+    f.close()
+
+    node_input_dictionary = {"ID":entity,"text_KNApSAcK":"text_null","OID_KNApSAcK":"OID_null","type":data_type,"remarks_KNApSAcK":"remarks_null"}
+
+    cnt = 0
+    for line in input_file:
+        temp_in = line.rstrip("\n").split("\t")
+
+        node_input_dictionary["ID"] = temp_in[0]
+        node_input_dictionary["type"] = "Bioactivity"
+
+        cnt = cnt + 1
+
+        print(temp_in)
+
+        try:
+            label_type = data_type
+        except:
+            print("add node without type error.")
+            continue
+
+        a.add_nodes(label_type, **node_input_dictionary)
+
+    print("\nUpload done")
 
 
+def edge_input_New(InputFilePath, InputFileName):
+    global a
+    #output_file = "C://Users//kms0845//Desktop//Work//Data//190531//edges_out_real.csv"
 
+    node1_id = 0
+    node2_id = 0
+    node1_domain = ""
+    node2_domain = ""
+
+    Metabolite_lable_reverse_dictionary = {"Metabolite":"Metabolite", "disease":"Disease", "mutation":"Mutation", "gene":"Gene", "species":"Species", "miRNA":"miRNA",
+                                            "pathway":"pathway"}
+
+
+    #lable_dictionary = {"Chemical": 1, "Disease": 2, "Mutation": 3, "Gene": 4, "Species": 5, "CellLine": 6,
+    #                    "Hallmark": 7, "Pro" : 8}
+
+    f = open(InputFilePath + InputFileName + ".txt","r")
+
+    relationship_cnt = 1
+    line_cnt = 1
+
+    edge_input_dictionary = {}
+    cnt3 = 1
+    line = f.readline()
+
+    while True:
+        line = f.readline()
+        if not line : break
+        line_temp = line.rstrip("\n").split("\t")
+        type_of_relationship = "Similarity_Distance"
+
+        # if('CUI-less' in line_temp[2]):
+        #     line_temp[2] = "CUI-less-"+str(line_temp[0])
+        node1_name = line_temp[0]
+        try :
+            node1_domain = "Metabolite"
+        except:
+            print("Node1_DOMAIN_1 Erorr!",cnt3)
+            print(line)
+
+        # if ('CUI-less' in line_temp[5]):
+        #     line_temp[5] = "CUI-less-" + str(line_temp[3])
+        node2_name = line_temp[1]
+        try :
+            node2_domain = "Metabolite"
+        except:
+            print("Node1_DOMAIN_2 Erorr!",cnt3)
+            print(line)
+
+        relationship_cnt = relationship_cnt + 1
+        edge_input_dictionary = {}
+        edge_input_dictionary["Similarity_Distance"] = float(line_temp[2])
+        edge_input_dictionary["Entity"] = str("\"Entity\"")
+
+        temp_node1_id = a.node_id_with_lable(node1_name, node1_domain)
+        temp_node2_id = a.node_id_with_lable(node2_name, node2_domain)
+
+        if (temp_node1_id == -1 or temp_node2_id == -1):
+            print(str(node1_name)+"__"+str(node2_name))
+            continue
+        if (temp_node1_id == None or temp_node2_id == None):
+            print(str(node1_name) + "__" + str(node2_name))
+            continue
+
+        if (relationship_cnt == 10000):
+            relationship_cnt = 0
+            print(line_cnt * 10000)
+            line_cnt += 1
+
+
+        temp003 = a.check_relationships_by_id(temp_node1_id, temp_node2_id, type_of_relationship)
+        # print(temp003)
+        if (temp003 == -1):
+            a.create_relationship_by_id(temp_node1_id, temp_node2_id, type_of_relationship, edge_input_dictionary)
+        elif (temp003 == -2):
+            print("unkown relationship error")
+            print(node1_name, node1_domain, node2_name, node2_domain)
+            continue
+        if (relationship_cnt == 10000):
+            relationship_cnt = 0
+            print(line_cnt * 10000)
+            line_cnt += 1
+    f.close()
+
+def link_input_Disease_Pathway_Protein_TTD(InputFilePath, InputFileName):
+    global a
+
+    node1_domain = ""
+    node2_domain = ""
+
+    f = open(InputFilePath + InputFileName, "r")
+
+    relationship_cnt = 1
+    line_cnt = 1
+
+    cnt3 = 1
+
+    while True:
+        line = f.readline()
+        if not line : break
+        line_temp = line.rstrip("\n").split("\t")
+        type_of_relationship = "Pathway_name"
+
+        node1_name = line_temp[0]
+        try :
+            node1_domain = "Protein"
+        except:
+            print("Node1_DOMAIN_1 Erorr!",cnt3)
+            print(line)
+
+        # if ('CUI-less' in line_temp[5]):
+        #     line_temp[5] = "CUI-less-" + str(line_temp[3])
+        node2_name = line_temp[1]
+        try :
+            node2_domain = "Disease"
+        except:
+            print("Node1_DOMAIN_2 Erorr!",cnt3)
+            print(line)
+
+        relationship_cnt = relationship_cnt + 1
+        edge_input_dictionary = {}
+        #edge_input_dictionary["Pathway_name"] = float(line_temp[2])
+        edge_input_dictionary["Pathway_name"] = line_temp[2]
+        edge_input_dictionary["Entity"] = str("\"Entity\"")
+
+        temp_node1_id = a.node_id_with_lable(node1_name, node1_domain)
+        temp_node2_id = a.node_id_with_lable(node2_name, node2_domain)
+
+        if (temp_node1_id == -1 or temp_node2_id == -1):
+            print(str(node1_name)+"__"+str(node2_name))
+            continue
+        if (temp_node1_id == None or temp_node2_id == None):
+            print(str(node1_name) + "__" + str(node2_name))
+            continue
+
+        if (relationship_cnt == 10000):
+            relationship_cnt = 0
+            print(line_cnt * 10000)
+            line_cnt += 1
+
+
+        temp003 = a.check_relationships_by_id(temp_node1_id, temp_node2_id, type_of_relationship)
+        # print(temp003)
+        if (temp003 == -1):
+            a.create_relationship_by_id(temp_node1_id, temp_node2_id, type_of_relationship, edge_input_dictionary)
+        elif (temp003 == -2):
+            print("unkown relationship error")
+            print(node1_name, node1_domain, node2_name, node2_domain)
+            continue
+        if (relationship_cnt == 10000):
+            relationship_cnt = 0
+            print(line_cnt * 10000)
+            line_cnt += 1
+    f.close()
 
 
 def output_csv(node_list=[]):
@@ -2561,39 +2755,43 @@ def lionLBDValidation(bioconcept_ID="PR:000003035",bioconcept_Domain="Gene"):
 if __name__ == '__main__':
 
     start_time = time.time()
+
     """
-    InputFilePath = "C:/Users/Seomyungwon/Dropbox/Seomyungwon/#Medicinal_Plant_Network/"
-    InputFileName = "All_Nodes_PMN.txt"
+    InputFilePath = "C:\\Users\\seomy\\Desktop\\Upload_test\\"
+    InputFileName = "Link_Disease_Pathway_Protein_TTD.txt"
 
-    PMN_FilePath = "C:/Users/Seomyungwon/Dropbox/Seomyungwon/#Medicinal_Plant_Network/PMN_Generation_Output/"
-
-    InputFileList = []
-
-    f = open(InputFilePath + InputFileName, 'r')
-
-    while True:
-        line = f.readline()
-        if not line: break
-        new_line = line.split("\t")
-
-        InputFileList.append(new_line[0].strip())
     """
+
     # Neo4j upload setting
 
     a = Nodes_Noe4j()
 
     ## Input Nodes -##
+
+    #[Disease]
     #node_input_Disease_ChEMBL()
     #node_input_Disease_DisGeNET()
     #node_input_Disease_CTD()
 
-    node_input_Protein_TTD()
-    node_input_Protein_Uniprot()
-    node_input_Protein_BindingDB()
-    node_input_Protein_ChEMBL()
+    #[Protein]
+    #node_input_Protein_TTD()
+    #node_input_Protein_Uniprot()
+    #node_input_Protein_BindingDB()
+    #node_input_Protein_ChEMBL
+
+    #[Species]
+    #node_input_Species_KEGG()
+    #node_input_Species_NPASS()
+    #node_input_Species_KNApSAcK()
+
+    #[Bioactivity]
+    node_input_Bioactivity_KNApSAcK()
 
     ##- Input Links -##
+    #link_input_Disease_Pathway_Protein_TTD(InputFilePath, InputFileName)
+
     #edge_input_New()
+
     #for Input in InputFileList:
     #    edge_input_New(PMN_FilePath, Input)
 

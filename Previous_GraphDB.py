@@ -2097,7 +2097,6 @@ def node_input_Disease_DisGeNET(input_file_path="C:\\Users\\seomy\\Desktop\\Uplo
     f = open(input_file_path,"r")
     input_file = f.readlines()
     f.close()
-    csv_input_dictionary = {}
 
     node_input_dictionary = {"Unique_ID":entity,"text_DisGeNET":text,"OID_DisGeNET":OID,"ID":"ID_null","type":data_type,"remarks_DisGeNET":remarks}
 
@@ -2132,7 +2131,6 @@ def node_input_Disease_ChEMBL(input_file_path="C:\\Users\\seomy\\Desktop\\Upload
     f = open(input_file_path,"r")
     input_file = f.readlines()
     f.close()
-    csv_input_dictionary = {}
 
     node_input_dictionary = {"Unique_ID":entity,"text_ChEMBL":text,"OID_ChEMBL":OID,"ID":"ID_null","type":data_type,"remarks_ChEMBL":remarks}
 
@@ -2144,7 +2142,7 @@ def node_input_Disease_ChEMBL(input_file_path="C:\\Users\\seomy\\Desktop\\Upload
         node_input_dictionary["text_ChEMBL"] = temp_in[2]
         node_input_dictionary["OID_ChEMBL"] = temp_in[1]
         node_input_dictionary["type"] = "Disease"
-        node_input_dictionary["remarks_ChEMBL"] = temp_in[6]
+        node_input_dictionary["remarks_ChEMBL"] = temp_in[3]
 
 
         cnt = cnt + 1
@@ -2160,6 +2158,172 @@ def node_input_Disease_ChEMBL(input_file_path="C:\\Users\\seomy\\Desktop\\Upload
         a.add_nodes(label_type, **node_input_dictionary)
 
     print("\nUpload done")
+
+def node_input_Disease_CTD(input_file_path="C:\\Users\\seomy\\Desktop\\Upload_test\\Node_Disease_CTD.txt",entity="MeSH_ID",text="Disease_name",data_type="Disease"):
+    global a
+
+    f = open(input_file_path,"r")
+    input_file = f.readlines()
+    f.close()
+
+    node_input_dictionary = {"Unique_ID":entity,"text_CTD":text,"OID_CTD":"OID_null","ID":"ID_null","type":data_type,"remarks_CTD":"remarks_null"}
+
+    cnt = 0
+    for line in input_file:
+        temp_in = line.rstrip("\n").split("\t")
+
+        node_input_dictionary["Unique_ID"] = temp_in[0]
+        node_input_dictionary["text_CTD"] = temp_in[1]
+        node_input_dictionary["type"] = "Disease"
+
+        cnt = cnt + 1
+
+        print(temp_in)
+
+        try:
+            label_type = data_type
+        except:
+            print("add node without type error.")
+            continue
+
+        a.add_nodes(label_type, **node_input_dictionary)
+
+    print("\nUpload done")
+
+def node_input_Protein_ChEMBL(input_file_path="C:\\Users\\seomy\\Desktop\\Upload_test\\Node_Protein_ChEMBL.txt",entity="Uniprot_ID",text="Protein_name",OID="DB_ID",data_type="Protein", remarks="Protein_Type"):
+    global a
+
+    f = open(input_file_path,"r")
+    input_file = f.readlines()
+    f.close()
+
+    node_input_dictionary = {"Unique_ID":entity,"text_ChEMBL":text,"OID_ChEMBL":OID,"ID":"ID_null","type":data_type,"remarks_ChEMBL":remarks}
+
+    cnt = 0
+    for line in input_file:
+        temp_in = line.rstrip("\n").split("\t")
+
+        node_input_dictionary["Unique_ID"] = temp_in[0]
+        node_input_dictionary["text_ChEMBL"] = temp_in[2]
+        node_input_dictionary["OID_ChEMBL"] = temp_in[1]
+        node_input_dictionary["type"] = "Protein"
+        node_input_dictionary["remarks_ChEMBL"] = temp_in[3]
+
+        cnt = cnt + 1
+
+        print(temp_in)
+
+        try:
+            label_type = data_type
+        except:
+            print("add node without type error.")
+            continue
+
+        a.add_nodes(label_type, **node_input_dictionary)
+
+    print("\nUpload done")
+
+def node_input_Protein_BindingDB(input_file_path="C:\\Users\\seomy\\Desktop\\Upload_test\\Node_Protein_BindingDB.txt",entity="Uniprot_ID",text="Protein_name",OID="DB_ID",data_type="Protein", remarks="Uniprot_accessions"):
+    global a
+
+    f = open(input_file_path,"r")
+    input_file = f.readlines()
+    f.close()
+
+    node_input_dictionary = {"Unique_ID":entity,"text_BindingDB":text,"OID_BindingDB":OID,"ID":"ID_null","type":data_type,"remarks_BindingDB":remarks}
+
+    cnt = 0
+    for line in input_file:
+        temp_in = line.rstrip("\n").split("\t")
+
+        node_input_dictionary["Unique_ID"] = temp_in[0]
+        node_input_dictionary["text_BindingDB"] = temp_in[2]
+        node_input_dictionary["OID_BindingDB"] = temp_in[1]
+        node_input_dictionary["type"] = "Protein"
+        node_input_dictionary["remarks_BindingDB"] = temp_in[3]
+
+        cnt = cnt + 1
+
+        print(temp_in)
+
+        try:
+            label_type = data_type
+        except:
+            print("add node without type error.")
+            continue
+
+        a.add_nodes(label_type, **node_input_dictionary)
+
+    print("\nUpload done")
+
+def node_input_Protein_Uniprot(input_file_path="C:\\Users\\seomy\\Desktop\\Upload_test\\Node_Protein_Uniprot.txt",entity="Uniprot_ID",text="Protein_name",data_type="Protein", remarks="Uniprot_accessions"):
+    global a
+
+    f = open(input_file_path,"r")
+    input_file = f.readlines()
+    f.close()
+
+    node_input_dictionary = {"Unique_ID":entity,"text_Uniprot":text,"OID_Uniport":"OID_null","ID":"ID_null","type":data_type,"remarks_Uniprot":remarks}
+
+    cnt = 0
+    for line in input_file:
+        temp_in = line.rstrip("\n").split("\t")
+
+        node_input_dictionary["Unique_ID"] = temp_in[0]
+        node_input_dictionary["text_Uniprot"] = temp_in[2]
+        node_input_dictionary["type"] = "Protein"
+        node_input_dictionary["remarks_Uniprot"] = temp_in[1]
+
+        cnt = cnt + 1
+
+        print(temp_in)
+
+        try:
+            label_type = data_type
+        except:
+            print("add node without type error.")
+            continue
+
+        a.add_nodes(label_type, **node_input_dictionary)
+
+    print("\nUpload done")
+
+def node_input_Protein_TTD(input_file_path="C:\\Users\\seomy\\Desktop\\Upload_test\\Node_Protein_TTD.txt",entity="Uniprot_ID",text="Protein_name",OID="DB_ID",data_type="Protein", remarks="Protein_Type"):
+    global a
+
+    f = open(input_file_path,"r")
+    input_file = f.readlines()
+    f.close()
+
+    node_input_dictionary = {"Unique_ID":entity,"text_TTD":text,"OID_TTD":OID,"ID":"ID_null","type":data_type,"remarks_TTD":remarks}
+
+    cnt = 0
+    for line in input_file:
+        temp_in = line.rstrip("\n").split("\t")
+
+        node_input_dictionary["Unique_ID"] = temp_in[0]
+        node_input_dictionary["text_TTD"] = temp_in[2]
+        node_input_dictionary["OID_TTD"]  = temp_in[1]
+        node_input_dictionary["type"] = "Protein"
+        node_input_dictionary["remarks_TTD"] = temp_in[3]
+
+        cnt = cnt + 1
+
+        print(temp_in)
+
+        try:
+            label_type = data_type
+        except:
+            print("add node without type error.")
+            continue
+
+        a.add_nodes(label_type, **node_input_dictionary)
+
+    print("\nUpload done")
+
+
+
+
 
 
 def output_csv(node_list=[]):
@@ -2417,9 +2581,19 @@ if __name__ == '__main__':
     # Neo4j upload setting
 
     a = Nodes_Noe4j()
-    node_input_Disease_ChEMBL()
-    #edge_input_New()
 
+    ## Input Nodes -##
+    #node_input_Disease_ChEMBL()
+    #node_input_Disease_DisGeNET()
+    #node_input_Disease_CTD()
+
+    node_input_Protein_TTD()
+    node_input_Protein_Uniprot()
+    node_input_Protein_BindingDB()
+    node_input_Protein_ChEMBL()
+
+    ##- Input Links -##
+    #edge_input_New()
     #for Input in InputFileList:
     #    edge_input_New(PMN_FilePath, Input)
 

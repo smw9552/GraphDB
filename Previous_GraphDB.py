@@ -13,9 +13,9 @@ from neo4j import GraphDatabase, basic_auth
 
 
 #url = "bolt://175.121.89.176:8685"
-url = "bolt://1.233.215.39:7688"
+url = "bolt://1.233.215.39:7687"
 
-driver = GraphDatabase.driver(url,auth=basic_auth("neo4j","neo4j1234"))
+driver = GraphDatabase.driver(url,auth=basic_auth("kms0845","neo4j"))
 
 
 class Nodes_Noe4j:
@@ -2089,37 +2089,62 @@ def node_input_BERN(input_file_path="./Corona_Nodes/bern_disease_cui_sorted.txt"
 
     print("\nUpload done")
 
+## Node upload method 추가작업 진행
 
-def node_input_New(input_file_path="C://Users//Seomyungwon//Desktop//GraphDB_Test/Data//All_Nodes.txt",data_type="Metabolite"):
+def node_input_Disease_DisGeNET(input_file_path="C:\\Users\\seomy\\Desktop\\Upload_test\\Node_Disease_DisGeNET.txt",entity="MeSH_ID",text="Disease_name",OID="DB_ID",data_type="Disease",remarks="Disease_SemanticType"):
     global a
-    #    input_file =
-    #    output_file = "C://Users//kms0845//Desktop//Work//Data//190531//edges_out_real.csv"
-
-    #{
-    # "LABEL": "entity",
-    # "text": "Acetylmuramyl-Alanyl-Isoglutamine",
-    # "OID": "D09.067.550.050;D09.811.522.050;D12.644.233.050;",
-    # "ID": "MESH:D000119",
-    # "type": "Chemical",
-    # "remarks": ""
-    # }
 
     f = open(input_file_path,"r")
     input_file = f.readlines()
     f.close()
     csv_input_dictionary = {}
 
-    node_input_dictionary = {"LABLE":entity,"text":"text_null","OID":"OID_null","ID":"ID_null","type":data_type,"remarks":""}
+    node_input_dictionary = {"Unique_ID":entity,"text_DisGeNET":text,"OID_DisGeNET":OID,"ID":"ID_null","type":data_type,"remarks_DisGeNET":remarks}
 
     cnt = 0
-    line_temp = ""
     for line in input_file:
-        label_type = ""
-        temp_in = line.rstrip("\n")
+        temp_in = line.rstrip("\n").split("\t")
 
-        #node_input_dictionary["text"] = temp_in
-        node_input_dictionary["OID"] = temp_in
-        node_input_dictionary["ID"] = temp_in
+        node_input_dictionary["Unique_ID"] = temp_in[0]
+        node_input_dictionary["text_DisGeNET"] = temp_in[2]
+        node_input_dictionary["OID_DisGeNET"] = temp_in[1]
+        node_input_dictionary["type"] = "Disease"
+        node_input_dictionary["remarks_DisGeNET"] = temp_in[6]
+
+
+        cnt = cnt + 1
+
+        print(temp_in)
+
+        try:
+            label_type = data_type
+        except:
+            print("add node without type error.")
+            continue
+
+        a.add_nodes(label_type, **node_input_dictionary)
+
+    print("\nUpload done")
+
+def node_input_Disease_ChEMBL(input_file_path="C:\\Users\\seomy\\Desktop\\Upload_test\\Node_Disease_ChEMBL.txt",entity="MeSH_ID",text="Disease_name",OID="DB_ID",data_type="Disease",remarks="EFO_Terms"):
+    global a
+
+    f = open(input_file_path,"r")
+    input_file = f.readlines()
+    f.close()
+    csv_input_dictionary = {}
+
+    node_input_dictionary = {"Unique_ID":entity,"text_ChEMBL":text,"OID_ChEMBL":OID,"ID":"ID_null","type":data_type,"remarks_ChEMBL":remarks}
+
+    cnt = 0
+    for line in input_file:
+        temp_in = line.rstrip("\n").split("\t")
+
+        node_input_dictionary["Unique_ID"] = temp_in[0]
+        node_input_dictionary["text_ChEMBL"] = temp_in[2]
+        node_input_dictionary["OID_ChEMBL"] = temp_in[1]
+        node_input_dictionary["type"] = "Disease"
+        node_input_dictionary["remarks_ChEMBL"] = temp_in[6]
 
 
         cnt = cnt + 1
@@ -2372,7 +2397,7 @@ def lionLBDValidation(bioconcept_ID="PR:000003035",bioconcept_Domain="Gene"):
 if __name__ == '__main__':
 
     start_time = time.time()
-
+    """
     InputFilePath = "C:/Users/Seomyungwon/Dropbox/Seomyungwon/#Medicinal_Plant_Network/"
     InputFileName = "All_Nodes_PMN.txt"
 
@@ -2388,15 +2413,15 @@ if __name__ == '__main__':
         new_line = line.split("\t")
 
         InputFileList.append(new_line[0].strip())
-
+    """
     # Neo4j upload setting
 
     a = Nodes_Noe4j()
-    #node_input_New()
+    node_input_Disease_ChEMBL()
     #edge_input_New()
 
-    for Input in InputFileList:
-        edge_input_New(PMN_FilePath, Input)
+    #for Input in InputFileList:
+    #    edge_input_New(PMN_FilePath, Input)
 
 
     #a.load_all_nodes()

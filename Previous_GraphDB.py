@@ -2025,11 +2025,11 @@ def node_input_Disease_DisGeNET(input_file_path="C:\\Users\\seomyungwon\\Desktop
     for line in input_file:
         temp_in = line.rstrip("\n").split("\t")
 
-        node_input_dictionary["ID"] = temp_in[0]
-        node_input_dictionary["text_DisGeNET"] = temp_in[2]
-        node_input_dictionary["OID_DisGeNET"] = temp_in[1]
+        node_input_dictionary["ID"] = str(temp_in[0]).replace('"','')
+        node_input_dictionary["text_DisGeNET"] = str(temp_in[2]).replace('"','')
+        node_input_dictionary["OID_DisGeNET"] = str(temp_in[1]).replace('"','')
         node_input_dictionary["type"] = "Disease"
-        node_input_dictionary["remarks_DisGeNET"] = temp_in[6]
+        node_input_dictionary["remarks_DisGeNET"] = str(temp_in[6]).replace('"','')
 
 
         cnt = cnt + 1
@@ -2059,11 +2059,11 @@ def node_input_Disease_ChEMBL(input_file_path="C:\\Users\\seomyungwon\\Desktop\\
     for line in input_file:
         temp_in = line.rstrip("\n").split("\t")
 
-        node_input_dictionary["ID"] = temp_in[0]
-        node_input_dictionary["text_ChEMBL"] = temp_in[2]
-        node_input_dictionary["OID_ChEMBL"] = temp_in[1]
+        node_input_dictionary["ID"] = str(temp_in[0]).replace('"','')
+        node_input_dictionary["text_ChEMBL"] = str(temp_in[2]).replace('"','')
+        node_input_dictionary["OID_ChEMBL"] = str(temp_in[1]).replace('"','')
         node_input_dictionary["type"] = "Disease"
-        node_input_dictionary["remarks_ChEMBL"] = temp_in[3]
+        node_input_dictionary["remarks_ChEMBL"] = str(temp_in[3]).replace('"','')
 
 
         cnt = cnt + 1
@@ -2093,8 +2093,8 @@ def node_input_Disease_CTD(input_file_path="C:\\Users\\seomyungwon\\Desktop\\Upl
     for line in input_file:
         temp_in = line.rstrip("\n").split("\t")
 
-        node_input_dictionary["ID"] = temp_in[0]
-        node_input_dictionary["text_CTD"] = temp_in[1]
+        node_input_dictionary["ID"] = str(temp_in[0]).replace('"','')
+        node_input_dictionary["text_CTD"] = str(temp_in[1]).replace('"','')
         node_input_dictionary["type"] = "Disease"
 
         cnt = cnt + 1
@@ -2124,11 +2124,11 @@ def node_input_Protein_ChEMBL(input_file_path="C:\\Users\\seomyungwon\\Desktop\\
     for line in input_file:
         temp_in = line.rstrip("\n").split("\t")
 
-        node_input_dictionary["ID"] = temp_in[0]
-        node_input_dictionary["text_ChEMBL"] = temp_in[2]
-        node_input_dictionary["OID_ChEMBL"] = temp_in[1]
+        node_input_dictionary["ID"] = str(temp_in[0]).replace('"','')
+        node_input_dictionary["text_ChEMBL"] = str(temp_in[2]).replace('"','')
+        node_input_dictionary["OID_ChEMBL"] = str(temp_in[1]).replace('"','')
         node_input_dictionary["type"] = "Protein"
-        node_input_dictionary["remarks_ChEMBL"] = temp_in[3]
+        node_input_dictionary["remarks_ChEMBL"] = str(temp_in[3]).replace('"','')
 
         cnt = cnt + 1
 
@@ -2157,11 +2157,11 @@ def node_input_Protein_BindingDB(input_file_path="C:\\Users\\seomyungwon\\Deskto
     for line in input_file:
         temp_in = line.rstrip("\n").split("\t")
 
-        node_input_dictionary["ID"] = temp_in[0]
-        node_input_dictionary["text_BindingDB"] = temp_in[2]
-        node_input_dictionary["OID_BindingDB"] = temp_in[1]
+        node_input_dictionary["ID"] = str(temp_in[0]).replace('"','')
+        node_input_dictionary["text_BindingDB"] = str(temp_in[2]).replace('"','')
+        node_input_dictionary["OID_BindingDB"] = str(temp_in[1]).replace('"','')
         node_input_dictionary["type"] = "Protein"
-        node_input_dictionary["remarks_BindingDB"] = temp_in[3]
+        node_input_dictionary["remarks_BindingDB"] = str(temp_in[3]).replace('"','')
 
         cnt = cnt + 1
 
@@ -2190,10 +2190,10 @@ def node_input_Protein_Uniprot(input_file_path="C:\\Users\\seomyungwon\\Desktop\
     for line in input_file:
         temp_in = line.rstrip("\n").split("\t")
 
-        node_input_dictionary["ID"] = temp_in[0]
-        node_input_dictionary["text_Uniprot"] = temp_in[2]
+        node_input_dictionary["ID"] = str(temp_in[0]).replace('"','')
+        node_input_dictionary["text_Uniprot"] = str(temp_in[2]).replace('"','')
         node_input_dictionary["type"] = "Protein"
-        node_input_dictionary["remarks_Uniprot"] = temp_in[1]
+        node_input_dictionary["remarks_Uniprot"] = str(temp_in[1]).replace('"','')
 
         cnt = cnt + 1
 
@@ -2222,11 +2222,11 @@ def node_input_Protein_TTD(input_file_path="C:\\Users\\seomyungwon\\Desktop\\Upl
     for line in input_file:
         temp_in = line.rstrip("\n").split("\t")
 
-        node_input_dictionary["ID"] = temp_in[0]
-        node_input_dictionary["text_TTD"] = temp_in[2]
-        node_input_dictionary["OID_TTD"]  = temp_in[1]
+        node_input_dictionary["ID"] = str(temp_in[0]).replace('"','')
+        node_input_dictionary["text_TTD"] = str(temp_in[2]).replace('"','')
+        node_input_dictionary["OID_TTD"]  = str(temp_in[1]).replace('"','')
         node_input_dictionary["type"] = "Protein"
-        node_input_dictionary["remarks_TTD"] = temp_in[3]
+        node_input_dictionary["remarks_TTD"] = str(temp_in[3]).replace('"','')
 
         cnt = cnt + 1
 
@@ -2255,11 +2255,11 @@ def node_input_Species_KEGG(input_file_path="C:\\Users\\seomyungwon\\Desktop\\Up
     for line in input_file:
         temp_in = line.rstrip("\n").split("\t")
 
-        node_input_dictionary["ID"] = temp_in[0]
-        node_input_dictionary["text_KEGG"] = temp_in[2]
-        node_input_dictionary["OID_KEGG"]  = temp_in[1]
+        node_input_dictionary["ID"] = str(temp_in[0]).replace('"','')
+        node_input_dictionary["text_KEGG"] = str(temp_in[2]).replace('"','')
+        node_input_dictionary["OID_KEGG"]  = str(temp_in[1]).replace('"','')
         node_input_dictionary["type"] = "Species"
-        node_input_dictionary["remarks_KEGG"] = temp_in[4]
+        node_input_dictionary["remarks_KEGG"] = str(temp_in[4]).replace('"','')
 
         cnt = cnt + 1
 
@@ -2288,10 +2288,10 @@ def node_input_Species_NPASS(input_file_path="C:\\Users\\seomyungwon\\Desktop\\U
     for line in input_file:
         temp_in = line.rstrip("\n").split("\t")
 
-        node_input_dictionary["ID"] = temp_in[0]
-        node_input_dictionary["OID_NPASS"]  = temp_in[1]
+        node_input_dictionary["ID"] = str(temp_in[0]).replace('"','')
+        node_input_dictionary["OID_NPASS"]  = str(temp_in[1]).replace('"','')
         node_input_dictionary["type"] = "Species"
-        node_input_dictionary["remarks_NPASS"] = temp_in[2]
+        node_input_dictionary["remarks_NPASS"] = str(temp_in[2]).replace('"','')
 
         cnt = cnt + 1
 
@@ -2320,7 +2320,37 @@ def node_input_Species_KNApSAcK(input_file_path="C:\\Users\\seomyungwon\\Desktop
     for line in input_file:
         temp_in = line.rstrip("\n").split("\t")
 
-        node_input_dictionary["ID"] = temp_in[0]
+        node_input_dictionary["ID"] = str(temp_in[0]).replace('"','')
+        node_input_dictionary["type"] = "Species"
+
+        cnt = cnt + 1
+
+        print(temp_in)
+
+        try:
+            label_type = data_type
+        except:
+            print("add node without type error.")
+            continue
+
+        a.add_nodes(label_type, **node_input_dictionary)
+
+    print("\nUpload done")
+
+def node_input_Species_Uniprot(input_file_path="C:\\Users\\seomyungwon\\Desktop\\Upload_test\\Node_Species_Uniprot.txt",entity="Scientific_name",data_type="Species"):
+    global a
+
+    f = open(input_file_path,"r")
+    input_file = f.readlines()
+    f.close()
+
+    node_input_dictionary = {"ID":entity,"text_Uniprot":"text_null","OID_Uniprot":"OID_null","type":data_type,"remarks_Uniprot":"remarks_null"}
+
+    cnt = 0
+    for line in input_file:
+        temp_in = line.rstrip("\n").split("\t")
+
+        node_input_dictionary["ID"] = str(temp_in[0]).replace('"','')
         node_input_dictionary["type"] = "Species"
 
         cnt = cnt + 1
@@ -2350,7 +2380,7 @@ def node_input_Bioactivity_KNApSAcK(input_file_path="C:\\Users\\seomyungwon\\Des
     for line in input_file:
         temp_in = line.rstrip("\n").split("\t")
 
-        node_input_dictionary["ID"] = temp_in[0]
+        node_input_dictionary["ID"] = str(temp_in[0]).replace('"','')
         node_input_dictionary["type"] = "Bioactivity"
 
         cnt = cnt + 1
@@ -2367,7 +2397,38 @@ def node_input_Bioactivity_KNApSAcK(input_file_path="C:\\Users\\seomyungwon\\Des
 
     print("\nUpload done")
 
+def node_input_Compound_ChEMBL(input_file_path="C:\\Users\\seomyungwon\\Desktop\\Upload_test\\Node_Compound_ChEMBL.txt",entity="ChEMBL_ID", text="Molecular formula",OID="Molecular Species",data_type="Compound", remarks="smile"):
+    global a
 
+    f = open(input_file_path,"r")
+    input_file = f.readlines()
+    f.close()
+
+    node_input_dictionary = {"ID":entity,"text_ChEMBL":text,"OID_ChEMBL":OID,"type":data_type,"remarks_ChEMBL":remarks}
+
+    cnt = 0
+    for line in input_file:
+        temp_in = line.rstrip("\n").split("\t")
+
+        node_input_dictionary["ID"] = str(temp_in[0]).replace('"','')
+        node_input_dictionary["text_ChEMBL"] = str(temp_in[1]).replace('"','')
+        node_input_dictionary["OID_ChEMBL"] = str(temp_in[2]).replace('"','')
+        node_input_dictionary["type"] = "Compound"
+        node_input_dictionary["remarks_ChEMBL"] = str(temp_in[3]).replace('"','')
+
+        cnt = cnt + 1
+
+        print(temp_in)
+
+        try:
+            label_type = data_type
+        except:
+            print("add node without type error.")
+            continue
+
+        a.add_nodes(label_type, **node_input_dictionary)
+
+    print("\nUpload done")
 
 
 ## Link upload method 추가 작업 진행
@@ -2455,7 +2516,7 @@ def edge_input_New(InputFilePath, InputFileName):
             line_cnt += 1
     f.close()
 
-def link_input_Disease_Pathway_Protein_TTD(InputFilePath, InputFileName):
+def link_input_Disease_Pathway_Protein_TTD(InputFilePath, InputFileName="Link_Disease_Pathway_Protein_TTD.txt"):
     global a
 
     node1_domain = ""
@@ -2475,7 +2536,7 @@ def link_input_Disease_Pathway_Protein_TTD(InputFilePath, InputFileName):
         type_of_relationship = str("Pathway_name")
         print(line_temp)
 
-        node1_name = line_temp[0]
+        node1_name = str(line_temp[0]).replace('"','')
         print(node1_name)
         try :
             node1_domain = "Protein"
@@ -2483,7 +2544,7 @@ def link_input_Disease_Pathway_Protein_TTD(InputFilePath, InputFileName):
             print("Node1_DOMAIN_1 Erorr!",cnt3)
             print(line)
 
-        node2_name = line_temp[1]
+        node2_name = line_temp[1].replace('"',"")
         print(node2_name)
         try :
             node2_domain = "Disease"
@@ -2493,9 +2554,7 @@ def link_input_Disease_Pathway_Protein_TTD(InputFilePath, InputFileName):
 
         relationship_cnt = relationship_cnt + 1
         edge_input_dictionary = {}
-        #edge_input_dictionary["Pathway_name"] = float(line_temp[2])
-        edge_input_dictionary["Pathway_name"] = str(line_temp[2])
-        #edge_input_dictionary["Entity"] = str("\"Entity\"")
+        edge_input_dictionary["Pathway_name"] = str(line_temp[2]).replace('"','')
 
         temp_node1_id = a.node_id_with_lable(node1_name, node1_domain)
         temp_node2_id = a.node_id_with_lable(node2_name, node2_domain)
@@ -2530,7 +2589,7 @@ def link_input_Disease_Pathway_Protein_TTD(InputFilePath, InputFileName):
             line_cnt += 1
     f.close()
 
-def link_input_Protein_Species_ChEMBL(InputFilePath, InputFileName):
+def link_input_Protein_Species_ChEMBL(InputFilePath, InputFileName="Link_Protein_Species_ChEMBL.txt"):
     global a
 
     node1_domain = ""
@@ -2550,7 +2609,7 @@ def link_input_Protein_Species_ChEMBL(InputFilePath, InputFileName):
         type_of_relationship = str("Data_relationship")
         print(line_temp)
 
-        node1_name = line_temp[0]
+        node1_name = str(line_temp[0]).replace('"','')
         print(node1_name)
         try :
             node1_domain = "Protein"
@@ -2558,7 +2617,7 @@ def link_input_Protein_Species_ChEMBL(InputFilePath, InputFileName):
             print("Node1_DOMAIN_1 Erorr!",cnt3)
             print(line)
 
-        node2_name = line_temp[1]
+        node2_name = str(line_temp[1]).replace('"','')
         print(node2_name)
         try :
             node2_domain = "Species"
@@ -2569,8 +2628,6 @@ def link_input_Protein_Species_ChEMBL(InputFilePath, InputFileName):
         relationship_cnt = relationship_cnt + 1
         edge_input_dictionary = {}
         edge_input_dictionary["Data_relationship"] = float(line_temp[2])
-        #edge_input_dictionary["Pathway_name"] = line_temp[2]
-        #edge_input_dictionary["Entity"] = str("\"Entity\"")
 
         temp_node1_id = a.node_id_with_lable(node1_name, node1_domain)
         temp_node2_id = a.node_id_with_lable(node2_name, node2_domain)
@@ -2604,6 +2661,653 @@ def link_input_Protein_Species_ChEMBL(InputFilePath, InputFileName):
             line_cnt += 1
     f.close()
 
+def link_input_Protein_Species_Uniprot(InputFilePath, InputFileName="Link_Protein_Species_Uniprot.txt"):
+    global a
+
+    node1_domain = ""
+    node2_domain = ""
+
+    f = open(InputFilePath + InputFileName, "r")
+
+    relationship_cnt = 1
+    line_cnt = 1
+
+    cnt3 = 1
+
+    while True:
+        line = f.readline()
+        if not line: break
+        line_temp = line.rstrip("\n").split("\t")
+        type_of_relationship = str("Data_relationship")
+        print(line_temp)
+
+        node1_name = str(line_temp[0]).replace('"','')
+        print(node1_name)
+        try :
+            node1_domain = "Protein"
+        except:
+            print("Node1_DOMAIN_1 Erorr!",cnt3)
+            print(line)
+
+        node2_name = str(line_temp[1]).replace('"','')
+        print(node2_name)
+        try :
+            node2_domain = "Species"
+        except:
+            print("Node1_DOMAIN_2 Erorr!",cnt3)
+            print(line)
+
+        relationship_cnt = relationship_cnt + 1
+        edge_input_dictionary = {}
+        edge_input_dictionary["Data_relationship"] = float(line_temp[2])
+
+        temp_node1_id = a.node_id_with_lable(node1_name, node1_domain)
+        temp_node2_id = a.node_id_with_lable(node2_name, node2_domain)
+
+
+        if (temp_node1_id == -1 or temp_node2_id == -1):
+            print(str(node1_name)+"__"+str(node2_name))
+            continue
+        if (temp_node1_id == None or temp_node2_id == None):
+            print(str(node1_name) + "__" + str(node2_name))
+            continue
+
+        if (relationship_cnt == 10000):
+            relationship_cnt = 0
+            print(line_cnt * 10000)
+            line_cnt += 1
+
+
+        temp003 = a.check_relationships_by_id(temp_node1_id, temp_node2_id, type_of_relationship)
+        #print(temp003)
+
+        if (temp003 == -1):
+            a.create_relationship_by_id(temp_node1_id, temp_node2_id, type_of_relationship, edge_input_dictionary)
+        elif (temp003 == -2):
+            print("unkown relationship error")
+            print(node1_name, node1_domain, node2_name, node2_domain)
+            continue
+        if (relationship_cnt == 10000):
+            relationship_cnt = 0
+            print(line_cnt * 10000)
+            line_cnt += 1
+    f.close()
+
+def link_input_Species_Bioactivity_KNApSAcK(InputFilePath, InputFileName="Link_Species_Bioactivity_KNApSAcK.txt"):
+    global a
+
+    node1_domain = ""
+    node2_domain = ""
+
+    f = open(InputFilePath + InputFileName, "r")
+
+    relationship_cnt = 1
+    line_cnt = 1
+
+    cnt3 = 1
+
+    while True:
+        line = f.readline()
+        if not line: break
+        line_temp = line.rstrip("\n").split("\t")
+        type_of_relationship = str("Data_relationship")
+        print(line_temp)
+
+        node1_name = str(line_temp[0]).replace('"','')
+        print(node1_name)
+        try :
+            node1_domain = "Species"
+        except:
+            print("Node1_DOMAIN_1 Erorr!",cnt3)
+            print(line)
+
+        node2_name = str(line_temp[1]).replace('"','')
+        print(node2_name)
+        try :
+            node2_domain = "Bioactivity"
+        except:
+            print("Node1_DOMAIN_2 Erorr!",cnt3)
+            print(line)
+
+        relationship_cnt = relationship_cnt + 1
+        edge_input_dictionary = {}
+        edge_input_dictionary["Data_relationship"] = float(line_temp[2])
+
+        temp_node1_id = a.node_id_with_lable(node1_name, node1_domain)
+        temp_node2_id = a.node_id_with_lable(node2_name, node2_domain)
+
+
+        if (temp_node1_id == -1 or temp_node2_id == -1):
+            print(str(node1_name)+"__"+str(node2_name))
+            continue
+        if (temp_node1_id == None or temp_node2_id == None):
+            print(str(node1_name) + "__" + str(node2_name))
+            continue
+
+        if (relationship_cnt == 10000):
+            relationship_cnt = 0
+            print(line_cnt * 10000)
+            line_cnt += 1
+
+
+        temp003 = a.check_relationships_by_id(temp_node1_id, temp_node2_id, type_of_relationship)
+        #print(temp003)
+
+        if (temp003 == -1):
+            a.create_relationship_by_id(temp_node1_id, temp_node2_id, type_of_relationship, edge_input_dictionary)
+        elif (temp003 == -2):
+            print("unkown relationship error")
+            print(node1_name, node1_domain, node2_name, node2_domain)
+            continue
+        if (relationship_cnt == 10000):
+            relationship_cnt = 0
+            print(line_cnt * 10000)
+            line_cnt += 1
+    f.close()
+
+def link_input_Protein_EC50_Compound_BindingDB_ChEMBL(InputFilePath, InputFileName="Link_Protein_Bioassay(EC50)_Compound_BindingDB(ChEMBL).txt"):
+    global a
+
+    node1_domain = ""
+    node2_domain = ""
+
+    f = open(InputFilePath + InputFileName, "r")
+
+    relationship_cnt = 1
+    line_cnt = 1
+
+    cnt3 = 1
+
+    while True:
+        line = f.readline()
+        if not line: break
+        line_temp = line.rstrip("\n").split("\t")
+        type_of_relationship = str("Bioassay(EC50_nM)")
+        print(line_temp)
+
+        node1_name = str(line_temp[0]).replace('"','')
+        print(node1_name)
+        try :
+            node1_domain = "Protein"
+        except:
+            print("Node1_DOMAIN_1 Erorr!",cnt3)
+            print(line)
+
+        node2_name = str(line_temp[1]).replace('"','')
+        print(node2_name)
+        try :
+            node2_domain = "Compound"
+        except:
+            print("Node1_DOMAIN_2 Erorr!",cnt3)
+            print(line)
+
+        relationship_cnt = relationship_cnt + 1
+        edge_input_dictionary = {}
+        edge_input_dictionary["Bioassay(EC50_nM)"] = float(line_temp[2])
+
+        temp_node1_id = a.node_id_with_lable(node1_name, node1_domain)
+        temp_node2_id = a.node_id_with_lable(node2_name, node2_domain)
+
+
+        if (temp_node1_id == -1 or temp_node2_id == -1):
+            print(str(node1_name)+"__"+str(node2_name))
+            continue
+        if (temp_node1_id == None or temp_node2_id == None):
+            print(str(node1_name) + "__" + str(node2_name))
+            continue
+
+        if (relationship_cnt == 10000):
+            relationship_cnt = 0
+            print(line_cnt * 10000)
+            line_cnt += 1
+
+
+        temp003 = a.check_relationships_by_id(temp_node1_id, temp_node2_id, type_of_relationship)
+        #print(temp003)
+
+        if (temp003 == -1):
+            a.create_relationship_by_id(temp_node1_id, temp_node2_id, type_of_relationship, edge_input_dictionary)
+        elif (temp003 == -2):
+            print("unkown relationship error")
+            print(node1_name, node1_domain, node2_name, node2_domain)
+            continue
+        if (relationship_cnt == 10000):
+            relationship_cnt = 0
+            print(line_cnt * 10000)
+            line_cnt += 1
+    f.close()
+
+def link_input_Protein_IC50_Compound_BindingDB_ChEMBL(InputFilePath, InputFileName="Link_Protein_Bioassay(IC50)_Compound_BindingDB(ChEMBL).txt"):
+    global a
+
+    node1_domain = ""
+    node2_domain = ""
+
+    f = open(InputFilePath + InputFileName, "r")
+
+    relationship_cnt = 1
+    line_cnt = 1
+
+    cnt3 = 1
+
+    while True:
+        line = f.readline()
+        if not line: break
+        line_temp = line.rstrip("\n").split("\t")
+        type_of_relationship = str("Bioassay(IC50_nM)")
+        print(line_temp)
+
+        node1_name = str(line_temp[0]).replace('"','')
+        print(node1_name)
+        try :
+            node1_domain = "Protein"
+        except:
+            print("Node1_DOMAIN_1 Erorr!",cnt3)
+            print(line)
+
+        node2_name = str(line_temp[1]).replace('"','')
+        print(node2_name)
+        try :
+            node2_domain = "Compound"
+        except:
+            print("Node1_DOMAIN_2 Erorr!",cnt3)
+            print(line)
+
+        relationship_cnt = relationship_cnt + 1
+        edge_input_dictionary = {}
+        edge_input_dictionary["Bioassay(IC50_nM)"] = float(line_temp[2])
+
+        temp_node1_id = a.node_id_with_lable(node1_name, node1_domain)
+        temp_node2_id = a.node_id_with_lable(node2_name, node2_domain)
+
+
+        if (temp_node1_id == -1 or temp_node2_id == -1):
+            print(str(node1_name)+"__"+str(node2_name))
+            continue
+        if (temp_node1_id == None or temp_node2_id == None):
+            print(str(node1_name) + "__" + str(node2_name))
+            continue
+
+        if (relationship_cnt == 10000):
+            relationship_cnt = 0
+            print(line_cnt * 10000)
+            line_cnt += 1
+
+
+        temp003 = a.check_relationships_by_id(temp_node1_id, temp_node2_id, type_of_relationship)
+        #print(temp003)
+
+        if (temp003 == -1):
+            a.create_relationship_by_id(temp_node1_id, temp_node2_id, type_of_relationship, edge_input_dictionary)
+        elif (temp003 == -2):
+            print("unkown relationship error")
+            print(node1_name, node1_domain, node2_name, node2_domain)
+            continue
+        if (relationship_cnt == 10000):
+            relationship_cnt = 0
+            print(line_cnt * 10000)
+            line_cnt += 1
+    f.close()
+
+def link_input_Protein_Kd_Compound_BindingDB_ChEMBL(InputFilePath, InputFileName="Link_Protein_Bioassay(Kd)_Compound_BindingDB(ChEMBL).txt"):
+    global a
+
+    node1_domain = ""
+    node2_domain = ""
+
+    f = open(InputFilePath + InputFileName, "r")
+
+    relationship_cnt = 1
+    line_cnt = 1
+
+    cnt3 = 1
+
+    while True:
+        line = f.readline()
+        if not line: break
+        line_temp = line.rstrip("\n").split("\t")
+        type_of_relationship = str("Bioassay(Kd_nM)")
+        print(line_temp)
+
+        node1_name = str(line_temp[0]).replace('"','')
+        print(node1_name)
+        try :
+            node1_domain = "Protein"
+        except:
+            print("Node1_DOMAIN_1 Erorr!",cnt3)
+            print(line)
+
+        node2_name = str(line_temp[1]).replace('"','')
+        print(node2_name)
+        try :
+            node2_domain = "Compound"
+        except:
+            print("Node1_DOMAIN_2 Erorr!",cnt3)
+            print(line)
+
+        relationship_cnt = relationship_cnt + 1
+        edge_input_dictionary = {}
+        edge_input_dictionary["Bioassay(Kd_nM)"] = float(line_temp[2])
+
+        temp_node1_id = a.node_id_with_lable(node1_name, node1_domain)
+        temp_node2_id = a.node_id_with_lable(node2_name, node2_domain)
+
+
+        if (temp_node1_id == -1 or temp_node2_id == -1):
+            print(str(node1_name)+"__"+str(node2_name))
+            continue
+        if (temp_node1_id == None or temp_node2_id == None):
+            print(str(node1_name) + "__" + str(node2_name))
+            continue
+
+        if (relationship_cnt == 10000):
+            relationship_cnt = 0
+            print(line_cnt * 10000)
+            line_cnt += 1
+
+
+        temp003 = a.check_relationships_by_id(temp_node1_id, temp_node2_id, type_of_relationship)
+        #print(temp003)
+
+        if (temp003 == -1):
+            a.create_relationship_by_id(temp_node1_id, temp_node2_id, type_of_relationship, edge_input_dictionary)
+        elif (temp003 == -2):
+            print("unkown relationship error")
+            print(node1_name, node1_domain, node2_name, node2_domain)
+            continue
+        if (relationship_cnt == 10000):
+            relationship_cnt = 0
+            print(line_cnt * 10000)
+            line_cnt += 1
+    f.close()
+
+def link_input_Protein_Ki_Compound_BindingDB_ChEMBL(InputFilePath, InputFileName="Link_Protein_Bioassay(Ki)_Compound_BindingDB(ChEMBL).txt"):
+    global a
+
+    node1_domain = ""
+    node2_domain = ""
+
+    f = open(InputFilePath + InputFileName, "r")
+
+    relationship_cnt = 1
+    line_cnt = 1
+
+    cnt3 = 1
+
+    while True:
+        line = f.readline()
+        if not line: break
+        line_temp = line.rstrip("\n").split("\t")
+        type_of_relationship = str("Bioassay(Ki_nM)")
+        print(line_temp)
+
+        node1_name = str(line_temp[0]).replace('"','')
+        print(node1_name)
+        try :
+            node1_domain = "Protein"
+        except:
+            print("Node1_DOMAIN_1 Erorr!",cnt3)
+            print(line)
+
+        node2_name = str(line_temp[1]).replace('"','')
+        print(node2_name)
+        try :
+            node2_domain = "Compound"
+        except:
+            print("Node1_DOMAIN_2 Erorr!",cnt3)
+            print(line)
+
+        relationship_cnt = relationship_cnt + 1
+        edge_input_dictionary = {}
+        edge_input_dictionary["Bioassay(Ki_nM)"] = float(line_temp[2])
+
+        temp_node1_id = a.node_id_with_lable(node1_name, node1_domain)
+        temp_node2_id = a.node_id_with_lable(node2_name, node2_domain)
+
+
+        if (temp_node1_id == -1 or temp_node2_id == -1):
+            print(str(node1_name)+"__"+str(node2_name))
+            continue
+        if (temp_node1_id == None or temp_node2_id == None):
+            print(str(node1_name) + "__" + str(node2_name))
+            continue
+
+        if (relationship_cnt == 10000):
+            relationship_cnt = 0
+            print(line_cnt * 10000)
+            line_cnt += 1
+
+
+        temp003 = a.check_relationships_by_id(temp_node1_id, temp_node2_id, type_of_relationship)
+        #print(temp003)
+
+        if (temp003 == -1):
+            a.create_relationship_by_id(temp_node1_id, temp_node2_id, type_of_relationship, edge_input_dictionary)
+        elif (temp003 == -2):
+            print("unkown relationship error")
+            print(node1_name, node1_domain, node2_name, node2_domain)
+            continue
+        if (relationship_cnt == 10000):
+            relationship_cnt = 0
+            print(line_cnt * 10000)
+            line_cnt += 1
+    f.close()
+
+def link_input_Disease_Compound_ChEMBL(InputFilePath, InputFileName="Link_Disease_Compound_ChEMBL.txt"):
+    global a
+
+    node1_domain = ""
+    node2_domain = ""
+
+    f = open(InputFilePath + InputFileName, "r")
+
+    relationship_cnt = 1
+    line_cnt = 1
+
+    cnt3 = 1
+
+    while True:
+        line = f.readline()
+        if not line: break
+        line_temp = line.rstrip("\n").split("\t")
+        type_of_relationship = str("Data_relationship")
+        print(line_temp)
+
+        node1_name = str(line_temp[0]).replace('"','')
+        print(node1_name)
+        try :
+            node1_domain = "Disease"
+        except:
+            print("Node1_DOMAIN_1 Erorr!",cnt3)
+            print(line)
+
+        node2_name = str(line_temp[1]).replace('"','')
+        print(node2_name)
+        try :
+            node2_domain = "Compound"
+        except:
+            print("Node1_DOMAIN_2 Erorr!",cnt3)
+            print(line)
+
+        relationship_cnt = relationship_cnt + 1
+        edge_input_dictionary = {}
+        edge_input_dictionary["Data_relationship"] = float(line_temp[2])
+
+        temp_node1_id = a.node_id_with_lable(node1_name, node1_domain)
+        temp_node2_id = a.node_id_with_lable(node2_name, node2_domain)
+
+
+        if (temp_node1_id == -1 or temp_node2_id == -1):
+            print(str(node1_name)+"__"+str(node2_name))
+            continue
+        if (temp_node1_id == None or temp_node2_id == None):
+            print(str(node1_name) + "__" + str(node2_name))
+            continue
+
+        if (relationship_cnt == 10000):
+            relationship_cnt = 0
+            print(line_cnt * 10000)
+            line_cnt += 1
+
+
+        temp003 = a.check_relationships_by_id(temp_node1_id, temp_node2_id, type_of_relationship)
+        #print(temp003)
+
+        if (temp003 == -1):
+            a.create_relationship_by_id(temp_node1_id, temp_node2_id, type_of_relationship, edge_input_dictionary)
+        elif (temp003 == -2):
+            print("unkown relationship error")
+            print(node1_name, node1_domain, node2_name, node2_domain)
+            continue
+        if (relationship_cnt == 10000):
+            relationship_cnt = 0
+            print(line_cnt * 10000)
+            line_cnt += 1
+    f.close()
+
+def link_input_Species_Compound_NPASS(InputFilePath, InputFileName="Link_Species_Compound_NPASS.txt"):
+    global a
+
+    node1_domain = ""
+    node2_domain = ""
+
+    f = open(InputFilePath + InputFileName, "r")
+
+    relationship_cnt = 1
+    line_cnt = 1
+
+    cnt3 = 1
+
+    while True:
+        line = f.readline()
+        if not line: break
+        line_temp = line.rstrip("\n").split("\t")
+        type_of_relationship = str("Data_relationship")
+        print(line_temp)
+
+        node1_name = str(line_temp[0]).replace('"','')
+        print(node1_name)
+        try :
+            node1_domain = "Species"
+        except:
+            print("Node1_DOMAIN_1 Erorr!",cnt3)
+            print(line)
+
+        node2_name = str(line_temp[1]).replace('"','')
+        print(node2_name)
+        try :
+            node2_domain = "Compound"
+        except:
+            print("Node1_DOMAIN_2 Erorr!",cnt3)
+            print(line)
+
+        relationship_cnt = relationship_cnt + 1
+        edge_input_dictionary = {}
+        edge_input_dictionary["Data_relationship"] = float(line_temp[2])
+
+        temp_node1_id = a.node_id_with_lable(node1_name, node1_domain)
+        temp_node2_id = a.node_id_with_lable(node2_name, node2_domain)
+
+
+        if (temp_node1_id == -1 or temp_node2_id == -1):
+            print(str(node1_name)+"__"+str(node2_name))
+            continue
+        if (temp_node1_id == None or temp_node2_id == None):
+            print(str(node1_name) + "__" + str(node2_name))
+            continue
+
+        if (relationship_cnt == 10000):
+            relationship_cnt = 0
+            print(line_cnt * 10000)
+            line_cnt += 1
+
+
+        temp003 = a.check_relationships_by_id(temp_node1_id, temp_node2_id, type_of_relationship)
+        #print(temp003)
+
+        if (temp003 == -1):
+            a.create_relationship_by_id(temp_node1_id, temp_node2_id, type_of_relationship, edge_input_dictionary)
+        elif (temp003 == -2):
+            print("unkown relationship error")
+            print(node1_name, node1_domain, node2_name, node2_domain)
+            continue
+        if (relationship_cnt == 10000):
+            relationship_cnt = 0
+            print(line_cnt * 10000)
+            line_cnt += 1
+    f.close()
+
+def link_input_Species_Pathway_Compound_KNApSAcK(InputFilePath, InputFileName="Link_Species_Pathway_Compound_KNApSAcK.txt"):
+    global a
+
+    node1_domain = ""
+    node2_domain = ""
+
+    f = open(InputFilePath + InputFileName, "r")
+
+    relationship_cnt = 1
+    line_cnt = 1
+
+    cnt3 = 1
+
+    while True:
+        line = f.readline()
+        if not line: break
+        line_temp = line.rstrip("\n").split("\t")
+        type_of_relationship = str("Pathway_name")
+        print(line_temp)
+
+        node1_name = str(line_temp[0]).replace('"','')
+        print(node1_name)
+        try :
+            node1_domain = "Species"
+        except:
+            print("Node1_DOMAIN_1 Erorr!",cnt3)
+            print(line)
+
+        node2_name = str(line_temp[1]).replace('"','')
+        print(node2_name)
+        try :
+            node2_domain = "Compound"
+        except:
+            print("Node1_DOMAIN_2 Erorr!",cnt3)
+            print(line)
+
+        relationship_cnt = relationship_cnt + 1
+        edge_input_dictionary = {}
+        edge_input_dictionary["Pathway_name"] = str(line_temp[2]).replace('"','')
+
+        temp_node1_id = a.node_id_with_lable(node1_name, node1_domain)
+        temp_node2_id = a.node_id_with_lable(node2_name, node2_domain)
+
+
+        if (temp_node1_id == -1 or temp_node2_id == -1):
+            print(str(node1_name)+"__"+str(node2_name))
+            continue
+        if (temp_node1_id == None or temp_node2_id == None):
+            print(str(node1_name) + "__" + str(node2_name))
+            continue
+
+        if (relationship_cnt == 10000):
+            relationship_cnt = 0
+            print(line_cnt * 10000)
+            line_cnt += 1
+
+
+        temp003 = a.check_relationships_by_id(temp_node1_id, temp_node2_id, type_of_relationship)
+        #print(temp003)
+
+        if (temp003 == -1):
+            a.create_relationship_by_id(temp_node1_id, temp_node2_id, type_of_relationship, edge_input_dictionary)
+        elif (temp003 == -2):
+            print("unkown relationship error")
+            print(node1_name, node1_domain, node2_name, node2_domain)
+            continue
+        if (relationship_cnt == 10000):
+            relationship_cnt = 0
+            print(line_cnt * 10000)
+            line_cnt += 1
+    f.close()
 
 
 
@@ -2845,7 +3549,6 @@ if __name__ == '__main__':
 
 
     InputFilePath = "C:\\Users\\seomyungwon\\Desktop\\Upload_test\\"
-    InputFileName = "Link_Disease_Pathway_Protein_TTD.txt"
 
 
     # Neo4j upload setting
@@ -2869,14 +3572,28 @@ if __name__ == '__main__':
     #node_input_Species_KEGG()
     #node_input_Species_NPASS()
     #node_input_Species_KNApSAcK()
+    node_input_Species_Uniprot()
 
     #[Bioactivity]
     #node_input_Bioactivity_KNApSAcK()
 
+    #[Compound]
+    node_input_Compound_ChEMBL()
+
 
     ##- Input Links -##
-    link_input_Disease_Pathway_Protein_TTD(InputFilePath, InputFileName)
-    #link_input_Protein_Species_ChEMBL(InputFilePath, InputFileName)
+
+    link_input_Disease_Pathway_Protein_TTD(InputFilePath)
+    link_input_Protein_Species_ChEMBL(InputFilePath)
+    link_input_Protein_Species_Uniprot(InputFilePath)
+    link_input_Species_Bioactivity_KNApSAcK(InputFilePath)
+    link_input_Protein_EC50_Compound_BindingDB_ChEMBL(InputFilePath)
+    link_input_Protein_IC50_Compound_BindingDB_ChEMBL(InputFilePath)
+    link_input_Protein_Kd_Compound_BindingDB_ChEMBL(InputFilePath)
+    link_input_Protein_Ki_Compound_BindingDB_ChEMBL(InputFilePath)
+    link_input_Disease_Compound_ChEMBL(InputFilePath)
+    link_input_Species_Compound_NPASS(InputFilePath)
+    link_input_Species_Pathway_Compound_KNApSAcK(InputFilePath)
 
 
     #for Input in InputFileList:

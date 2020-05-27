@@ -282,7 +282,11 @@ class Nodes_Noe4j:
                         continue
                     contents = contents.replace("'", "\'")
                     contents = contents.replace(",", "\,")
-                    temp_properties = temp_properties + key + " : " + str(properties[key]) + ", "
+                    if(isinstance(properties[key],str)):
+                        temp_properties = temp_properties + key + " : \"" + str(properties[key]) + "\", "
+                    else:
+                        temp_properties = temp_properties + key + " : " + str(properties[key]) + ", "
+
                 temp_properties = temp_properties[:-2] + "}"
                 temp = "MATCH (a),(b)\n" + "WHERE ID(a) = "+ str(id1)+ " AND ID(b) = " + str(id2) + "\n" + "CREATE (a)-[r:" + relationship_type + " " + temp_properties + "]->(b)\n"
             else :
@@ -2006,9 +2010,9 @@ def node_input_BERN(input_file_path="./Corona_Nodes/bern_disease_cui_sorted.txt"
 
     print("\nUpload done")
 
-## Node upload method 추가작업 진행
+## Node upload method 추가 작업 진행
 
-def node_input_Disease_DisGeNET(input_file_path="C:\\Users\\seomy\\Desktop\\Upload_test\\Node_Disease_DisGeNET.txt",entity="MeSH_ID",text="Disease_name",OID="DB_ID",data_type="Disease",remarks="Disease_SemanticType"):
+def node_input_Disease_DisGeNET(input_file_path="C:\\Users\\seomyungwon\\Desktop\\Upload_test\\Node_Disease_DisGeNET.txt",entity="MeSH_ID",text="Disease_name",OID="DB_ID",data_type="Disease",remarks="Disease_SemanticType"):
     global a
 
     f = open(input_file_path,"r")
@@ -2042,7 +2046,7 @@ def node_input_Disease_DisGeNET(input_file_path="C:\\Users\\seomy\\Desktop\\Uplo
 
     print("\nUpload done")
 
-def node_input_Disease_ChEMBL(input_file_path="C:\\Users\\seomy\\Desktop\\Upload_test\\Node_Disease_ChEMBL.txt",entity="MeSH_ID",text="Disease_name",OID="DB_ID",data_type="Disease",remarks="EFO_Terms"):
+def node_input_Disease_ChEMBL(input_file_path="C:\\Users\\seomyungwon\\Desktop\\Upload_test\\Node_Disease_ChEMBL.txt",entity="MeSH_ID",text="Disease_name",OID="DB_ID",data_type="Disease",remarks="EFO_Terms"):
     global a
 
     f = open(input_file_path,"r")
@@ -2076,7 +2080,7 @@ def node_input_Disease_ChEMBL(input_file_path="C:\\Users\\seomy\\Desktop\\Upload
 
     print("\nUpload done")
 
-def node_input_Disease_CTD(input_file_path="C:\\Users\\seomy\\Desktop\\Upload_test\\Node_Disease_CTD.txt",entity="MeSH_ID",text="Disease_name",data_type="Disease"):
+def node_input_Disease_CTD(input_file_path="C:\\Users\\seomyungwon\\Desktop\\Upload_test\\Node_Disease_CTD.txt",entity="MeSH_ID",text="Disease_name",data_type="Disease"):
     global a
 
     f = open(input_file_path,"r")
@@ -2107,7 +2111,7 @@ def node_input_Disease_CTD(input_file_path="C:\\Users\\seomy\\Desktop\\Upload_te
 
     print("\nUpload done")
 
-def node_input_Protein_ChEMBL(input_file_path="C:\\Users\\seomy\\Desktop\\Upload_test\\Node_Protein_ChEMBL.txt",entity="Uniprot_ID",text="Protein_name",OID="DB_ID",data_type="Protein", remarks="Protein_Type"):
+def node_input_Protein_ChEMBL(input_file_path="C:\\Users\\seomyungwon\\Desktop\\Upload_test\\Node_Protein_ChEMBL.txt",entity="Uniprot_ID",text="Protein_name",OID="DB_ID",data_type="Protein", remarks="Protein_Type"):
     global a
 
     f = open(input_file_path,"r")
@@ -2140,7 +2144,7 @@ def node_input_Protein_ChEMBL(input_file_path="C:\\Users\\seomy\\Desktop\\Upload
 
     print("\nUpload done")
 
-def node_input_Protein_BindingDB(input_file_path="C:\\Users\\seomy\\Desktop\\Upload_test\\Node_Protein_BindingDB.txt",entity="Uniprot_ID",text="Protein_name",OID="DB_ID",data_type="Protein", remarks="Uniprot_accessions"):
+def node_input_Protein_BindingDB(input_file_path="C:\\Users\\seomyungwon\\Desktop\\Upload_test\\Node_Protein_BindingDB.txt",entity="Uniprot_ID",text="Protein_name",OID="DB_ID",data_type="Protein", remarks="Uniprot_accessions"):
     global a
 
     f = open(input_file_path,"r")
@@ -2173,7 +2177,7 @@ def node_input_Protein_BindingDB(input_file_path="C:\\Users\\seomy\\Desktop\\Upl
 
     print("\nUpload done")
 
-def node_input_Protein_Uniprot(input_file_path="C:\\Users\\seomy\\Desktop\\Upload_test\\Node_Protein_Uniprot.txt",entity="Uniprot_ID",text="Protein_name",data_type="Protein", remarks="Uniprot_accessions"):
+def node_input_Protein_Uniprot(input_file_path="C:\\Users\\seomyungwon\\Desktop\\Upload_test\\Node_Protein_Uniprot.txt",entity="Uniprot_ID",text="Protein_name",data_type="Protein", remarks="Uniprot_accessions"):
     global a
 
     f = open(input_file_path,"r")
@@ -2205,7 +2209,7 @@ def node_input_Protein_Uniprot(input_file_path="C:\\Users\\seomy\\Desktop\\Uploa
 
     print("\nUpload done")
 
-def node_input_Protein_TTD(input_file_path="C:\\Users\\seomy\\Desktop\\Upload_test\\Node_Protein_TTD.txt",entity="Uniprot_ID",text="Protein_name",OID="DB_ID",data_type="Protein", remarks="Protein_Type"):
+def node_input_Protein_TTD(input_file_path="C:\\Users\\seomyungwon\\Desktop\\Upload_test\\Node_Protein_TTD.txt",entity="Uniprot_ID",text="Protein_name",OID="DB_ID",data_type="Protein", remarks="Protein_Type"):
     global a
 
     f = open(input_file_path,"r")
@@ -2238,7 +2242,7 @@ def node_input_Protein_TTD(input_file_path="C:\\Users\\seomy\\Desktop\\Upload_te
 
     print("\nUpload done")
 
-def node_input_Species_KEGG(input_file_path="C:\\Users\\seomy\\Desktop\\Upload_test\\Node_Species_KEGG.txt",entity="Scientific_name",text="DB_Code",OID="DB_ID",data_type="Species", remarks="Category"):
+def node_input_Species_KEGG(input_file_path="C:\\Users\\seomyungwon\\Desktop\\Upload_test\\Node_Species_KEGG.txt",entity="Scientific_name",text="DB_Code",OID="DB_ID",data_type="Species", remarks="Category"):
     global a
 
     f = open(input_file_path,"r")
@@ -2271,7 +2275,7 @@ def node_input_Species_KEGG(input_file_path="C:\\Users\\seomy\\Desktop\\Upload_t
 
     print("\nUpload done")
 
-def node_input_Species_NPASS(input_file_path="C:\\Users\\seomy\\Desktop\\Upload_test\\Node_Species_NPASS.txt",entity="Scientific_name",OID="DB_ID",data_type="Species", remarks="org_tax_level"):
+def node_input_Species_NPASS(input_file_path="C:\\Users\\seomyungwon\\Desktop\\Upload_test\\Node_Species_NPASS.txt",entity="Scientific_name",OID="DB_ID",data_type="Species", remarks="org_tax_level"):
     global a
 
     f = open(input_file_path,"r")
@@ -2303,7 +2307,7 @@ def node_input_Species_NPASS(input_file_path="C:\\Users\\seomy\\Desktop\\Upload_
 
     print("\nUpload done")
 
-def node_input_Species_KNApSAcK(input_file_path="C:\\Users\\seomy\\Desktop\\Upload_test\\Node_Species_KNApSAcK.txt",entity="Scientific_name",data_type="Species"):
+def node_input_Species_KNApSAcK(input_file_path="C:\\Users\\seomyungwon\\Desktop\\Upload_test\\Node_Species_KNApSAcK.txt",entity="Scientific_name",data_type="Species"):
     global a
 
     f = open(input_file_path,"r")
@@ -2333,7 +2337,7 @@ def node_input_Species_KNApSAcK(input_file_path="C:\\Users\\seomy\\Desktop\\Uplo
 
     print("\nUpload done")
 
-def node_input_Bioactivity_KNApSAcK(input_file_path="C:\\Users\\seomy\\Desktop\\Upload_test\\Node_Bioactivity_KNApSAcK.txt",entity="Bioactivity_keyword",data_type="Bioactivity"):
+def node_input_Bioactivity_KNApSAcK(input_file_path="C:\\Users\\seomyungwon\\Desktop\\Upload_test\\Node_Bioactivity_KNApSAcK.txt",entity="Bioactivity_keyword",data_type="Bioactivity"):
     global a
 
     f = open(input_file_path,"r")
@@ -2364,6 +2368,9 @@ def node_input_Bioactivity_KNApSAcK(input_file_path="C:\\Users\\seomy\\Desktop\\
     print("\nUpload done")
 
 
+
+
+## Link upload method 추가 작업 진행
 def edge_input_New(InputFilePath, InputFileName):
     global a
     #output_file = "C://Users//kms0845//Desktop//Work//Data//190531//edges_out_real.csv"
@@ -2463,20 +2470,21 @@ def link_input_Disease_Pathway_Protein_TTD(InputFilePath, InputFileName):
 
     while True:
         line = f.readline()
-        if not line : break
+        if not line: break
         line_temp = line.rstrip("\n").split("\t")
-        type_of_relationship = "Pathway_name"
+        type_of_relationship = str("Pathway_name")
+        print(line_temp)
 
         node1_name = line_temp[0]
+        print(node1_name)
         try :
             node1_domain = "Protein"
         except:
             print("Node1_DOMAIN_1 Erorr!",cnt3)
             print(line)
 
-        # if ('CUI-less' in line_temp[5]):
-        #     line_temp[5] = "CUI-less-" + str(line_temp[3])
         node2_name = line_temp[1]
+        print(node2_name)
         try :
             node2_domain = "Disease"
         except:
@@ -2486,11 +2494,12 @@ def link_input_Disease_Pathway_Protein_TTD(InputFilePath, InputFileName):
         relationship_cnt = relationship_cnt + 1
         edge_input_dictionary = {}
         #edge_input_dictionary["Pathway_name"] = float(line_temp[2])
-        edge_input_dictionary["Pathway_name"] = line_temp[2]
-        edge_input_dictionary["Entity"] = str("\"Entity\"")
+        edge_input_dictionary["Pathway_name"] = str(line_temp[2])
+        #edge_input_dictionary["Entity"] = str("\"Entity\"")
 
         temp_node1_id = a.node_id_with_lable(node1_name, node1_domain)
         temp_node2_id = a.node_id_with_lable(node2_name, node2_domain)
+
 
         if (temp_node1_id == -1 or temp_node2_id == -1):
             print(str(node1_name)+"__"+str(node2_name))
@@ -2506,7 +2515,9 @@ def link_input_Disease_Pathway_Protein_TTD(InputFilePath, InputFileName):
 
 
         temp003 = a.check_relationships_by_id(temp_node1_id, temp_node2_id, type_of_relationship)
-        # print(temp003)
+
+        print(temp003)
+
         if (temp003 == -1):
             a.create_relationship_by_id(temp_node1_id, temp_node2_id, type_of_relationship, edge_input_dictionary)
         elif (temp003 == -2):
@@ -2518,6 +2529,82 @@ def link_input_Disease_Pathway_Protein_TTD(InputFilePath, InputFileName):
             print(line_cnt * 10000)
             line_cnt += 1
     f.close()
+
+def link_input_Protein_Species_ChEMBL(InputFilePath, InputFileName):
+    global a
+
+    node1_domain = ""
+    node2_domain = ""
+
+    f = open(InputFilePath + InputFileName, "r")
+
+    relationship_cnt = 1
+    line_cnt = 1
+
+    cnt3 = 1
+
+    while True:
+        line = f.readline()
+        if not line: break
+        line_temp = line.rstrip("\n").split("\t")
+        type_of_relationship = str("Data_relationship")
+        print(line_temp)
+
+        node1_name = line_temp[0]
+        print(node1_name)
+        try :
+            node1_domain = "Protein"
+        except:
+            print("Node1_DOMAIN_1 Erorr!",cnt3)
+            print(line)
+
+        node2_name = line_temp[1]
+        print(node2_name)
+        try :
+            node2_domain = "Species"
+        except:
+            print("Node1_DOMAIN_2 Erorr!",cnt3)
+            print(line)
+
+        relationship_cnt = relationship_cnt + 1
+        edge_input_dictionary = {}
+        edge_input_dictionary["Data_relationship"] = float(line_temp[2])
+        #edge_input_dictionary["Pathway_name"] = line_temp[2]
+        #edge_input_dictionary["Entity"] = str("\"Entity\"")
+
+        temp_node1_id = a.node_id_with_lable(node1_name, node1_domain)
+        temp_node2_id = a.node_id_with_lable(node2_name, node2_domain)
+
+
+        if (temp_node1_id == -1 or temp_node2_id == -1):
+            print(str(node1_name)+"__"+str(node2_name))
+            continue
+        if (temp_node1_id == None or temp_node2_id == None):
+            print(str(node1_name) + "__" + str(node2_name))
+            continue
+
+        if (relationship_cnt == 10000):
+            relationship_cnt = 0
+            print(line_cnt * 10000)
+            line_cnt += 1
+
+
+        temp003 = a.check_relationships_by_id(temp_node1_id, temp_node2_id, type_of_relationship)
+        #print(temp003)
+
+        if (temp003 == -1):
+            a.create_relationship_by_id(temp_node1_id, temp_node2_id, type_of_relationship, edge_input_dictionary)
+        elif (temp003 == -2):
+            print("unkown relationship error")
+            print(node1_name, node1_domain, node2_name, node2_domain)
+            continue
+        if (relationship_cnt == 10000):
+            relationship_cnt = 0
+            print(line_cnt * 10000)
+            line_cnt += 1
+    f.close()
+
+
 
 
 def output_csv(node_list=[]):
@@ -2756,11 +2843,10 @@ if __name__ == '__main__':
 
     start_time = time.time()
 
-    """
-    InputFilePath = "C:\\Users\\seomy\\Desktop\\Upload_test\\"
+
+    InputFilePath = "C:\\Users\\seomyungwon\\Desktop\\Upload_test\\"
     InputFileName = "Link_Disease_Pathway_Protein_TTD.txt"
 
-    """
 
     # Neo4j upload setting
 
@@ -2785,12 +2871,13 @@ if __name__ == '__main__':
     #node_input_Species_KNApSAcK()
 
     #[Bioactivity]
-    node_input_Bioactivity_KNApSAcK()
+    #node_input_Bioactivity_KNApSAcK()
+
 
     ##- Input Links -##
-    #link_input_Disease_Pathway_Protein_TTD(InputFilePath, InputFileName)
+    link_input_Disease_Pathway_Protein_TTD(InputFilePath, InputFileName)
+    #link_input_Protein_Species_ChEMBL(InputFilePath, InputFileName)
 
-    #edge_input_New()
 
     #for Input in InputFileList:
     #    edge_input_New(PMN_FilePath, Input)
